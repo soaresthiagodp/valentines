@@ -288,16 +288,29 @@ const GALLERY_IMAGES = [
 (function initEnvelope() {
   const envelope = document.getElementById("envelope");
   const hint     = document.getElementById("envelopeHint");
+  const closeBtn = document.getElementById("letterClose");
   if (!envelope) return;
 
-  envelope.addEventListener("click", () => {
-    if (!envelope.classList.contains("open")) {
-      envelope.classList.add("open");
-      if (hint) {
-        hint.style.opacity = "0";
-        setTimeout(() => hint.remove(), 600);
-      }
-    }
+  function openEnvelope() {
+    envelope.classList.add("open");
+    if (hint) { hint.style.opacity = "0"; setTimeout(() => hint.remove(), 600); }
+  }
+
+  function closeEnvelope() {
+    envelope.classList.remove("open");
+  }
+
+  envelope.addEventListener("click", e => {
+    if (!envelope.classList.contains("open")) openEnvelope();
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    closeEnvelope();
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeEnvelope();
   });
 })();
 

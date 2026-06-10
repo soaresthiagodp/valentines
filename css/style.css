@@ -804,6 +804,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-style: italic;
 }
 
+.letter-close {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 0.8rem;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--rose);
+  cursor: pointer;
+  padding: 0;
+  font-weight: 300;
+  background: none;
+  border: none;
+}
+.letter-close:hover { color: var(--burgundy); }
+
 .letter-signature {
   font-size: 2rem !important;
   color: var(--burgundy) !important;
