@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Dia dos Namorados 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== CANVAS DE CORAÇÕES ========== -->
+  <canvas id="hearts-canvas"></canvas>
+
+  <!-- ========== PLAYER DE MÚSICA ========== -->
+  <div class="music-player" id="musicPlayer" title="Música romântica">
+    <audio id="bgAudio" loop>
+      <source src="audio/background-romantic.mp3" type="audio/mpeg" />
+    </audio>
+    <button class="music-btn" id="musicBtn" aria-label="Tocar/Pausar música">
+      <span class="music-icon play-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+      <span class="music-icon pause-icon hidden">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </span>
+      <span class="music-label">Música</span>
+    </button>
+    <div class="music-wave" id="musicWave">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-bg" style="background-image: url('images/hero.jpeg');"></div>
+    <div class="hero-content fade-in-element">
+      <p class="hero-eyebrow">Para você, meu amor</p>
+      <h1 class="hero-title">
+        <span class="great-vibes">Thiago</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="great-vibes">Gabriela</span>
+      </h1>
+      <p class="hero-subtitle">Cada dia ao seu lado é o maior presente que a vida me deu.</p>
+
+      <!-- CONTADOR DE TEMPO -->
+      <div class="counter-box">
+        <p class="counter-label">Juntos há</p>
+        <div class="counter-grid" id="loveCounter">
+          <div class="counter-unit"><span id="cnt-years">0</span><small>anos</small></div>
+          <div class="counter-sep">:</div>
+          <div class="counter-unit"><span id="cnt-months">0</span><small>meses</small></div>
+          <div class="counter-sep">:</div>
+          <div class="counter-unit"><span id="cnt-days">0</span><small>dias</small></div>
+          <div class="counter-sep">:</div>
+          <div class="counter-unit"><span id="cnt-hours">0</span><small>horas</small></div>
+          <div class="counter-sep">:</div>
+          <div class="counter-unit"><span id="cnt-minutes">0</span><small>min</small></div>
+          <div class="counter-sep">:</div>
+          <div class="counter-unit"><span id="cnt-seconds">0</span><small>seg</small></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#timeline" class="scroll-indicator" aria-label="Rolar para baixo">
+      <span class="scroll-arrow"></span>
+      <span class="scroll-text">nossa história</span>
+    </a>
+  </section>
+
+  <!-- ========== LINHA DO TEMPO ========== -->
+  <section class="section timeline-section" id="timeline">
+    <div class="section-inner">
+      <span class="section-eyebrow fade-in-element">memórias que guardarei para sempre</span>
+      <h2 class="section-title fade-in-element">Nossa <span class="great-vibes">História</span></h2>
+
+      <div class="timeline">
+
+        <!-- MARCO 1: Começo -->
+        <div class="timeline-item fade-in-element">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content left">
+            <div class="timeline-illustration">
+              <!-- Portaria: dois personagens, coração flutuando -->
+              <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fce4ec"/>
+                    <stop offset="100%" stop-color="#f8c8d4"/>
+                  </linearGradient>
+                </defs>
+                <rect width="320" height="200" fill="url(#bg1)"/>
+                <!-- Chão -->
+                <rect x="0" y="158" width="320" height="42" fill="#f4b8c8" opacity="0.5"/>
+                <!-- Balcão da portaria -->
+                <rect x="95" y="110" width="130" height="50" rx="4" fill="#e88fa0" opacity="0.6"/>
+                <rect x="85" y="105" width="150" height="12" rx="3" fill="#c9a84c" opacity="0.7"/>
+                <!-- Personagem 1 (ele) -->
+                <ellipse cx="108" cy="98" rx="14" ry="14" fill="#c9a84c" opacity="0.8"/>
+                <rect x="96" y="112" width="24" height="34" rx="5" fill="#8b1a2e" opacity="0.75"/>
+                <!-- Personagem 2 (ela) -->
+                <ellipse cx="212" cy="96" rx="14" ry="15" fill="#f4c2c2"/>
+                <path d="M198 88 Q212 72 226 88" fill="#5a0e1e" opacity="0.7"/>
+                <rect x="200" y="110" width="24" height="34" rx="5" fill="#e88fa0" opacity="0.8"/>
+                <!-- Coroa dela -->
+                <path d="M202 84 l4-7 l4 4 l4-7 l4 7" stroke="#c9a84c" stroke-width="2" fill="none" opacity="0.8"/>
+                <!-- Coração entre eles -->
+                <path d="M160 62 c0-8 -12-8 -12 0 c0 5 12 14 12 14 c0 0 12-9 12-14 c0-8 -12-8 -12 0z" fill="#8b1a2e" opacity="0.85"/>
+                <!-- Balão de fala (dele para ela) — retângulo arredondado + rabo apontando para ele -->
+                <rect x="34" y="38" width="80" height="36" rx="10" fill="white" opacity="0.85"/>
+                <polygon points="58,74 50,86 70,74" fill="white" opacity="0.85"/>
+                <!-- Texto dentro do balão em uma linha só, centralizado -->
+                <text x="74" y="52" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="9.5" fill="#8b1a2e">minha</text>
+                <text x="74" y="66" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="9.5" fill="#8b1a2e">princesa ♥</text>
+                <!-- Estrelinhas -->
+                <text x="250" y="55" font-size="14" fill="#c9a84c" opacity="0.7">✦</text>
+                <text x="30"  y="30" font-size="10" fill="#e88fa0" opacity="0.6">✦</text>
+                <text x="275" y="100" font-size="9" fill="#c9a84c" opacity="0.5">✦</text>
+            </svg>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">Julho 2021</span>
+              <h3>A Princesa da Portaria</h3>
+              <p>Tudo começou com uma palavra só. Você estava ali, e eu não consegui deixar o momento passar em silêncio. "Minha princesa" e o resto é história.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MARCO 2: Anos juntos -->
+        <div class="timeline-item fade-in-element">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content right">
+            <div class="timeline-illustration">
+              <!-- Calendário com corações, representando tempo juntos -->
+              <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#fff0f3"/>
+                    <stop offset="100%" stop-color="#fce4ec"/>
+                  </linearGradient>
+                </defs>
+                <rect width="320" height="200" fill="url(#bg2)"/>
+                <!-- Calendário grande -->
+                <rect x="60" y="28" width="200" height="148" rx="12" fill="white" opacity="0.85" stroke="#f4c2c2" stroke-width="1.5"/>
+                <!-- Topo vermelho do calendário -->
+                <rect x="60" y="28" width="200" height="36" rx="12" fill="#8b1a2e" opacity="0.8"/>
+                <rect x="60" y="46" width="200" height="18" fill="#8b1a2e" opacity="0.8"/>
+                <!-- Argolas -->
+                <rect x="110" y="22" width="10" height="18" rx="5" fill="#c9a84c" opacity="0.9"/>
+                <rect x="200" y="22" width="10" height="18" rx="5" fill="#c9a84c" opacity="0.9"/>
+                <!-- Título do mês -->
+                <text x="160" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="white" font-weight="bold">2021 → 2024</text>
+                <!-- Grade de dias com corações -->
+                <!-- linha 1 -->
+                <text x="88"  y="90" text-anchor="middle" font-size="14" fill="#e88fa0">♥</text>
+                <text x="116" y="90" text-anchor="middle" font-size="14" fill="#c9a84c">♥</text>
+                <text x="144" y="90" text-anchor="middle" font-size="14" fill="#8b1a2e">♥</text>
+                <text x="172" y="90" text-anchor="middle" font-size="14" fill="#e88fa0">♥</text>
+                <text x="200" y="90" text-anchor="middle" font-size="14" fill="#c9a84c">♥</text>
+                <text x="228" y="90" text-anchor="middle" font-size="14" fill="#8b1a2e">♥</text>
+                <!-- linha 2 -->
+                <text x="88"  y="115" text-anchor="middle" font-size="14" fill="#c9a84c">♥</text>
+                <text x="116" y="115" text-anchor="middle" font-size="14" fill="#8b1a2e">♥</text>
+                <text x="144" y="115" text-anchor="middle" font-size="14" fill="#e88fa0">♥</text>
+                <text x="172" y="115" text-anchor="middle" font-size="14" fill="#c9a84c">♥</text>
+                <text x="200" y="115" text-anchor="middle" font-size="14" fill="#8b1a2e">♥</text>
+                <text x="228" y="115" text-anchor="middle" font-size="14" fill="#e88fa0">♥</text>
+                <!-- linha 3 -->
+                <text x="88"  y="140" text-anchor="middle" font-size="14" fill="#8b1a2e">♥</text>
+                <text x="116" y="140" text-anchor="middle" font-size="14" fill="#e88fa0">♥</text>
+                <text x="144" y="140" text-anchor="middle" font-size="14" fill="#c9a84c">♥</text>
+                <text x="172" y="140" text-anchor="middle" font-size="14" fill="#8b1a2e">♥</text>
+                <text x="200" y="140" text-anchor="middle" font-size="14" fill="#e88fa0">♥</text>
+                <text x="228" y="140" text-anchor="middle" font-size="14" fill="#c9a84c">♥</text>
+                <!-- linha 4 parcial -->
+                <text x="88"  y="165" text-anchor="middle" font-size="14" fill="#e88fa0">♥</text>
+                <text x="116" y="165" text-anchor="middle" font-size="14" fill="#c9a84c">♥</text>
+                <text x="144" y="165" text-anchor="middle" font-size="14" fill="#8b1a2e">♥</text>
+              </svg>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">2021 — 2024</span>
+              <h3>Cada Dia, Uma Escolha</h3>
+              <p>Foram dias construídos juntos, um de cada vez. Risadas, games, planos, cumplicidade - você virou parte do que eu sou. Cada momento ao seu lado foi um presente que guardo comigo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MARCO 3: Pausa — sutil, delicado -->
+        <div class="timeline-item timeline-item--pause fade-in-element">
+          <div class="timeline-dot timeline-dot--pause"></div>
+          <div class="timeline-content left timeline-content--pause">
+            <div class="timeline-illustration">
+              <!-- Dois pássaros voando em direções diferentes, lua ao fundo -->
+              <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#e8d8df"/>
+                    <stop offset="100%" stop-color="#d4c0c8"/>
+                  </linearGradient>
+                </defs>
+                <rect width="320" height="200" fill="url(#bg3)"/>
+                <!-- Lua -->
+                <circle cx="160" cy="95" r="52" fill="#f0e0e6" opacity="0.5"/>
+                <circle cx="178" cy="83" r="44" fill="#d4c0c8"/>
+                <!-- Estrelas -->
+                <text x="52"  y="42"  font-size="10" fill="white" opacity="0.5">✦</text>
+                <text x="248" y="55"  font-size="8"  fill="white" opacity="0.4">✦</text>
+                <text x="140" y="28"  font-size="7"  fill="white" opacity="0.5">✦</text>
+                <text x="290" y="90"  font-size="9"  fill="white" opacity="0.4">✦</text>
+                <text x="20"  y="100" font-size="7"  fill="white" opacity="0.35">✦</text>
+                <!-- Pássaro 1 — voando para a esquerda -->
+                <path d="M95 88 q-12-10 -24-6 q12 2 14 10 q-8-6 -16-4 q10 4 10 10" stroke="#8b6070" stroke-width="1.8" fill="none" opacity="0.7"/>
+                <!-- Pássaro 2 — voando para a direita -->
+                <path d="M225 88 q12-10 24-6 q-12 2 -14 10 q8-6 16-4 q-10 4 -10 10" stroke="#8b6070" stroke-width="1.8" fill="none" opacity="0.7"/>
+                <!-- Frase central sutil -->
+                <text x="160" y="148" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="11" fill="#6b4858" opacity="0.75">às vezes o amor precisa de silêncio</text>
+                <text x="160" y="163" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="11" fill="#6b4858" opacity="0.75">para se encontrar de novo</text>
+              </svg>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">2024</span>
+              <h3>Uma Pausa no Caminho</h3>
+              <p>Às vezes a vida pede um tempo para respirar. Foram meses de silêncio - mas o que é verdadeiro não some, só espera o momento certo para voltar.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MARCO 4: Recomeço -->
+        <div class="timeline-item fade-in-element">
+          <div class="timeline-dot timeline-dot--restart"></div>
+          <div class="timeline-content right">
+            <div class="timeline-illustration">
+              <!-- Fogos de artifício / virada do ano -->
+              <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#1c0a0f"/>
+                    <stop offset="100%" stop-color="#3d0d1a"/>
+                  </linearGradient>
+                  <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                  </radialGradient>
+                  <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e88fa0" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                  </radialGradient>
+                </defs>
+                <rect width="320" height="200" fill="url(#bg4)"/>
+                <!-- Brilhos de fundo -->
+                <circle cx="100" cy="70" r="50" fill="url(#glow1)"/>
+                <circle cx="220" cy="80" r="45" fill="url(#glow2)"/>
+                <!-- Fogo 1 - dourado -->
+                <line x1="100" y1="70" x2="100" y2="38" stroke="#c9a84c" stroke-width="1.5" opacity="0.9"/>
+                <line x1="100" y1="70" x2="72"  y2="48" stroke="#c9a84c" stroke-width="1.5" opacity="0.8"/>
+                <line x1="100" y1="70" x2="128" y2="48" stroke="#c9a84c" stroke-width="1.5" opacity="0.8"/>
+                <line x1="100" y1="70" x2="68"  y2="70" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+                <line x1="100" y1="70" x2="132" y2="70" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+                <line x1="100" y1="70" x2="78"  y2="96" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+                <line x1="100" y1="70" x2="122" y2="96" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+                <circle cx="100" cy="70" r="5" fill="#e8d08a"/>
+                <!-- Faíscas douradas -->
+                <circle cx="100" cy="36" r="2.5" fill="#c9a84c"/>
+                <circle cx="70"  cy="46" r="2"   fill="#c9a84c"/>
+                <circle cx="130" cy="46" r="2"   fill="#c9a84c"/>
+                <circle cx="66"  cy="70" r="2"   fill="#c9a84c"/>
+                <circle cx="134" cy="70" r="2"   fill="#c9a84c"/>
+                <!-- Fogo 2 - rosê -->
+                <line x1="220" y1="78" x2="220" y2="46" stroke="#e88fa0" stroke-width="1.5" opacity="0.9"/>
+                <line x1="220" y1="78" x2="192" y2="56" stroke="#e88fa0" stroke-width="1.5" opacity="0.8"/>
+                <line x1="220" y1="78" x2="248" y2="56" stroke="#e88fa0" stroke-width="1.5" opacity="0.8"/>
+                <line x1="220" y1="78" x2="188" y2="78" stroke="#e88fa0" stroke-width="1.5" opacity="0.7"/>
+                <line x1="220" y1="78" x2="252" y2="78" stroke="#e88fa0" stroke-width="1.5" opacity="0.7"/>
+                <line x1="220" y1="78" x2="198" y2="104" stroke="#e88fa0" stroke-width="1.5" opacity="0.6"/>
+                <line x1="220" y1="78" x2="242" y2="104" stroke="#e88fa0" stroke-width="1.5" opacity="0.6"/>
+                <circle cx="220" cy="78" r="5" fill="#f4c2c2"/>
+                <circle cx="220" cy="44" r="2.5" fill="#e88fa0"/>
+                <circle cx="190" cy="54" r="2"   fill="#e88fa0"/>
+                <circle cx="250" cy="54" r="2"   fill="#e88fa0"/>
+                <!-- Fogo 3 - borgonha pequeno -->
+                <line x1="160" y1="55" x2="160" y2="32" stroke="#8b1a2e" stroke-width="1.2" opacity="0.8"/>
+                <line x1="160" y1="55" x2="140" y2="40" stroke="#8b1a2e" stroke-width="1.2" opacity="0.7"/>
+                <line x1="160" y1="55" x2="180" y2="40" stroke="#8b1a2e" stroke-width="1.2" opacity="0.7"/>
+                <line x1="160" y1="55" x2="136" y2="58" stroke="#8b1a2e" stroke-width="1.2" opacity="0.6"/>
+                <line x1="160" y1="55" x2="184" y2="58" stroke="#8b1a2e" stroke-width="1.2" opacity="0.6"/>
+                <circle cx="160" cy="55" r="3.5" fill="#c9384e"/>
+                <!-- Texto 2026 -->
+                <text x="160" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="white" opacity="0.12" letter-spacing="4">2026</text>
+                <!-- Frase -->
+                <text x="160" y="162" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="12" fill="#e8d08a" opacity="0.9">o recomeço de tudo</text>
+                <text x="160" y="178" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="12" fill="#e8d08a" opacity="0.9">agora reconectados</text>
+              </svg>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">1º de Janeiro, 2026 ✦</span>
+              <h3>O Melhor Recomeço</h3>
+              <p>Consolidamos novamente nossa relação, dessa vez com mais maturidade, mais certeza e mais amor do que antes. Essa é a nossa história, e ela continua.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALERIA ========== -->
+  <section class="section gallery-section" id="gallery">
+    <div class="section-inner">
+      <span class="section-eyebrow fade-in-element">momentos que amo reviver</span>
+      <h2 class="section-title fade-in-element">Nossas <span class="great-vibes">Fotos</span></h2>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item fade-in-element" data-index="0">
+          <img src="images/gallery1.jpeg" alt="Foto 1" loading="lazy" />
+          <div class="gallery-overlay"><span>✦</span></div>
+        </div>
+        <div class="gallery-item fade-in-element" data-index="1">
+          <img src="images/gallery2.jpeg" alt="Foto 2" loading="lazy" />
+          <div class="gallery-overlay"><span>✦</span></div>
+        </div>
+        <div class="gallery-item fade-in-element" data-index="2">
+          <img src="images/gallery3.jpeg" alt="Foto 3" loading="lazy" />
+          <div class="gallery-overlay"><span>✦</span></div>
+        </div>
+        <div class="gallery-item fade-in-element" data-index="3">
+          <img src="images/gallery4.jpeg" alt="Foto 4" loading="lazy" />
+          <div class="gallery-overlay"><span>✦</span></div>
+        </div>
+        <div class="gallery-item fade-in-element" data-index="4">
+          <img src="images/gallery5.jpeg" alt="Foto 5" loading="lazy" />
+          <div class="gallery-overlay"><span>✦</span></div>
+        </div>
+        <div class="gallery-item fade-in-element" data-index="5">
+          <img src="images/gallery6.jpeg" alt="Foto 6" loading="lazy" />
+          <div class="gallery-overlay"><span>✦</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galeria de fotos">
+    <button class="lb-close" id="lbClose" aria-label="Fechar">&times;</button>
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Próxima">&#8250;</button>
+    <div class="lb-img-wrap">
+      <img src="" alt="" id="lbImage" />
+    </div>
+    <div class="lb-counter" id="lbCounter">1 / 6</div>
+  </div>
+
+  <!-- ========== CARTA DE AMOR ========== -->
+  <section class="section letter-section" id="letter">
+    <div class="section-inner">
+      <span class="section-eyebrow fade-in-element">só para você</span>
+      <h2 class="section-title fade-in-element">Uma <span class="great-vibes">Carta</span> para Você</h2>
+
+      <div class="envelope-wrap fade-in-element">
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap top-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-heart">&#10084;</div>
+          </div>
+          <div class="envelope-flap bottom-flap"></div>
+          <div class="envelope-flap left-flap"></div>
+          <div class="envelope-flap right-flap"></div>
+          <div class="envelope-letter" id="envLetter">
+            <div class="letter-content">
+              <p class="letter-date">12 de junho de 2025</p>
+              <p class="letter-greeting">Meu amor,</p>
+              <p>Existem coisas que eu sinto dentro do peito que ainda não achei forma de dizer, então vou tentar com as letras que tenho.</p>
+              <p>Desde o primeiro dia, você mudou alguma coisa em mim que eu nem sabia que precisava mudar. Não foi do dia pra noite - foi aos poucos, como a luz que entra pela janela de manhã cedo e ilumina tudo sem fazer barulho.</p>
+              <p>Eu te amo quando você ri sem motivo nenhum. Cheia de manias, palhaçadinhas e parceira, te amo em cada momento. Te amo nos dias difíceis, quando o mundo pesa e você ainda assim sorri pra mim. Te amo na sua versão mais simples, mais real, mais humana.</p>
+              <p>Obrigado por cada abraço que virou refúgio, por cada conversa que virou memória, por cada momento bobo que virou história para contar. Você é a melhor parte dos meus dias.</p>
+              <p>Quero continuar construindo coisas com você - sonhos, planos, e até aquelas discussões bobas que terminam em risada. Quero ser a pessoa que você escolhe todo dia.</p>
+              <p class="letter-closing">Com todo o meu amor,</p>
+              <p class="letter-signature great-vibes">Thiago ♥</p>
+            </div>
+          </div>
+        </div>
+        <p class="envelope-hint" id="envelopeHint">Clique no envelope para abrir ✦</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOTÃO SURPRESA ========== -->
+  <section class="section surprise-section" id="surprise">
+    <div class="section-inner">
+      <div class="surprise-box fade-in-element">
+        <span class="section-eyebrow">a pergunta mais importante</span>
+        <h2 class="great-vibes surprise-title">Quer renovar o contrato daqui para eternidade?</h2>
+        <div class="surprise-buttons">
+          <button class="btn-yes" id="btnYes">Sim, com certeza! 💕</button>
+          <button class="btn-no" id="btnNo">Não</button>
+        </div>
+        <p class="yes-message hidden" id="yesMessage">
+          <span class="great-vibes">Eu sabia! Eu te amo demais! 🎉</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CANVAS CONFETTI ========== -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <p class="great-vibes footer-text">Feito com todo o meu amor ♥</p>
+    <p class="footer-sub">12 de junho - Feliz Dia dos Namorados</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
