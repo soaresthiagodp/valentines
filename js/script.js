@@ -314,18 +314,21 @@ const GALLERY_IMAGES = [
 
   // Position "Não" button randomly within parent bounds on hover / touch
   function runAway() {
-    const parentRect = wrap.getBoundingClientRect();
-    const btnRect    = btnNo.getBoundingClientRect();
+    const wrapRect  = wrap.getBoundingClientRect();
+    const btnW      = btnNo.offsetWidth;
+    const btnH      = btnNo.offsetHeight;
 
-    const maxX = parentRect.width  - btnRect.width;
-    const maxY = parentRect.height - btnRect.height;
+    // Zona segura: começa 70px abaixo do topo (abaixo do Sim) até o fundo do container
+    const SAFE_TOP  = 70;
+    const maxLeft   = wrapRect.width  - btnW;
+    const maxTop    = wrapRect.height - btnH;
 
-    const newLeft = Math.max(0, Math.min(maxX, Math.random() * maxX));
-    const newTop  = Math.max(0, Math.min(maxY, Math.random() * maxY));
+    const newLeft = Math.random() * maxLeft;
+    const newTop  = SAFE_TOP + Math.random() * Math.max(0, maxTop - SAFE_TOP);
 
-    btnNo.style.position = "absolute";
-    btnNo.style.left     = newLeft + "px";
-    btnNo.style.top      = newTop  + "px";
+    btnNo.style.left      = newLeft + "px";
+    btnNo.style.top       = newTop  + "px";
+    btnNo.style.transform = "none"; // anula o translateX inicial após primeiro escape
   }
 
   btnNo.addEventListener("mouseenter", runAway);

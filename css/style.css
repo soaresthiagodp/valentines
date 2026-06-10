@@ -833,16 +833,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .surprise-buttons {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
   position: relative;
-  min-height: 60px;
+  width: 100%;
+  height: 200px; /* zona de fuga do Não */
 }
 
 .btn-yes {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background: linear-gradient(135deg, var(--burgundy), var(--deep));
   color: #fff;
   font-family: var(--ff-sans);
@@ -853,14 +853,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 50px;
   box-shadow: 0 6px 24px rgba(139,26,46,0.4);
   transition: transform 0.25s, box-shadow 0.25s;
+  white-space: nowrap;
+  z-index: 2;
 }
 
 .btn-yes:hover {
-  transform: translateY(-3px) scale(1.04);
+  transform: translateX(-50%) translateY(-3px) scale(1.04);
   box-shadow: 0 12px 32px rgba(139,26,46,0.5);
 }
 
 .btn-no {
+  position: absolute;
+  top: 80px; /* começa fora da zona do Sim */
+  left: 50%;
+  transform: translateX(-50%);
   background: transparent;
   border: 1.5px solid var(--rose);
   color: var(--rose);
@@ -869,8 +875,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 500;
   padding: 0.8rem 1.8rem;
   border-radius: 50px;
-  transition: border-color 0.2s, color 0.2s;
-  position: absolute;
+  transition: top 0.15s ease, left 0.15s ease;
   white-space: nowrap;
 }
 
