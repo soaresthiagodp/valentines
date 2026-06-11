@@ -103,26 +103,25 @@ const GALLERY_IMAGES = [
 /* ================================================
    MUSIC PLAYER
    ================================================ */
+// Declarações globais — antes de initMusic
+const bgAudio = document.getElementById("bgAudio");
+const musicBtn = document.getElementById("musicBtn");
+const wave    = document.getElementById("musicWave");
+const playIc  = musicBtn.querySelector(".play-icon");
+const pausIc  = musicBtn.querySelector(".pause-icon");
+
 (function initMusic() {
-  const btn    = document.getElementById("musicBtn");
-  const audio  = document.getElementById("bgAudio");
-  const wave   = document.getElementById("musicWave");
-  const playIc = btn.querySelector(".play-icon");
-  const pausIc = btn.querySelector(".pause-icon");
+  if (!musicBtn || !bgAudio) return;
 
-  if (!btn || !audio) return;
-
-  btn.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play().then(() => {
+  musicBtn.addEventListener("click", () => {
+    if (bgAudio.paused) {
+      bgAudio.play().then(() => {
         playIc.classList.add("hidden");
         pausIc.classList.remove("hidden");
         wave.classList.add("active");
-      }).catch(() => {
-        // autoplay blocked — not much we can do
-      });
+      }).catch(() => {});
     } else {
-      audio.pause();
+      bgAudio.pause();
       playIc.classList.remove("hidden");
       pausIc.classList.add("hidden");
       wave.classList.remove("active");
@@ -323,6 +322,48 @@ const GALLERY_IMAGES = [
   const message = document.getElementById("yesMessage");
   if (!btnYes || !btnNo) return;
 
+  const memes = [];
+  let memeIndex = -1;
+
+  // Tenta carregar meme1.mp3, meme2.mp3... até o primeiro que não existir
+  (function loadMemes() {
+    function tryLoad(n) {
+      const audio = new Audio(`audio/meme${n}.mp3`);
+      audio.addEventListener("canplaythrough", () => {
+        memes.push(audio);
+        tryLoad(n + 1);
+      }, { once: true });
+      audio.addEventListener("error", () => {
+        // Arquivo não encontrado — para por aqui
+      }, { once: true });
+      audio.load();
+    }
+    tryLoad(1);
+  })();
+
+  function playMeme() {
+    if (!memes.length) return;
+    memes.forEach(m => { m.pause(); m.currentTime = 0; });
+    memeIndex = (memeIndex + 1) % memes.length;
+    const chosen = memes[memeIndex];
+
+    if (!bgAudio.paused) {
+      bgAudio.pause();
+      playIc.classList.remove("hidden");
+      pausIc.classList.add("hidden");
+      wave.classList.remove("active");
+      chosen.addEventListener("ended", () => {
+        bgAudio.play().then(() => {
+          playIc.classList.add("hidden");
+          pausIc.classList.remove("hidden");
+          wave.classList.add("active");
+        }).catch(() => {});
+      }, { once: true });
+    }
+
+    chosen.play().catch(() => {});
+  }
+
   const wrap = btnNo.parentElement;
 
   // Position "Não" button randomly within parent bounds on hover / touch
@@ -342,6 +383,7 @@ const GALLERY_IMAGES = [
     btnNo.style.left      = newLeft + "px";
     btnNo.style.top       = newTop  + "px";
     btnNo.style.transform = "none"; // anula o translateX inicial após primeiro escape
+    playMeme();
   }
 
   btnNo.addEventListener("mouseenter", runAway);
